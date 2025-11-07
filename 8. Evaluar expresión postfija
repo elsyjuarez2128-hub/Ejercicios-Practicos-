@@ -1,0 +1,43 @@
+*/
+*@autor Elsy Joselyn Godinez Juarez
+*
+import java.util.Stack;
+
+public class Ejercicio8 {
+
+    // Método que evalúa una expresión en notación postfija
+    public static int evaluar(String expr) {
+        Stack<Integer> pila = new Stack<>();
+
+        // Recorrer cada token (número u operador)
+        for (String token : expr.split(" ")) {
+            // Si es un número, se apila
+            if (token.matches("\\d+")) {
+                pila.push(Integer.parseInt(token));
+            } 
+            // Si es un operador, se desapilan dos operandos
+            else {
+                int b = pila.pop(); // segundo operando
+                int a = pila.pop(); // primer operando
+
+                // Aplicar la operación y apilar el resultado
+                switch (token) {
+                    case "+": pila.push(a + b); break;
+                    case "-": pila.push(a - b); break;
+                    case "*": pila.push(a * b); break;
+                    case "/": pila.push(a / b); break;
+                    default:
+                        throw new IllegalArgumentException("Operador no válido: " + token);
+                }
+            }
+        }
+
+        //  El resultado final queda en la pila
+        return pila.pop();
+    }
+
+    // Método principal
+    public static void main(String[] args) {
+        System.out.println("Resultado: " + evaluar("5 3 + 8 2 - *"));
+    }
+}

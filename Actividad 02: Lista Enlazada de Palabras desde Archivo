@@ -97,7 +97,7 @@ public class ListaPalabrasDesdeArchivo {
         System.out.print("Ingrese el nombre del archivo (por ejemplo palabras.txt): ");
         String nombreArchivo = sc.nextLine();
 
-        // 1️⃣ Lectura del archivo
+        // Lectura del archivo
         try (BufferedReader reader = new BufferedReader(new FileReader(nombreArchivo))) {
             String linea;
             while ((linea = reader.readLine()) != null) {

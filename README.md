@@ -28,3 +28,4 @@
 |**Ejercicio 6**|**Decimal a binario**|[Ver codigo](https://github.com/elsyjuarez2128-hub/Ejercicios-Practicos-/blob/main/6.%20Decimal%20a%20binario)
 |**Ejercicio 7**|**Simular función Deshacer (Undo)**|[Ver codigo](https://github.com/elsyjuarez2128-hub/Ejercicios-Practicos-/blob/main/7.%20Simular%20funci%C3%B3n%20Deshacer%20(Undo))|
 |**Ejercicio 8**|**Evaluar expresión postfija**|[Ver codigo](https://github.com/elsyjuarez2128-hub/Ejercicios-Practicos-/blob/main/8.%20Evaluar%20expresi%C3%B3n%20postfija)|
+|**Ejercicio 9**|**Revertir lista**|[Ver codigo](https://github.com/elsyjuarez2128-hub/Ejercicios-Practicos-/blob/main/9.%20Revertir%20lista)|

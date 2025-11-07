@@ -3,8 +3,8 @@
 
 | Programa                 | Descripción               | Ver código |
 |--------------------------|---------------------------|-------------|
-| **Actividad 1**   | **Comparación de colas** |[Ver codigo](https://github.com/elsyjuarez2128-hub/Ejercicios-Practicos-/blob/main/Ejercicio%201%3A%20Comparaci%C3%B3n%20de%20colas) |
-| **Actividad 2**      |  **Lista Enlazada de Palabras desde Archivo**               | [Ver codigo](https://github.com/elsyjuarez2128-hub/Ejercicios-Practicos-/blob/main/Actividad%2002%3A%20Lista%20Enlazada%20de%20Palabras%20desde%20Archivo))|
+| **Ejercicio 1**   | **Comparación de colas** |[Ver codigo](https://github.com/elsyjuarez2128-hub/Ejercicios-Practicos-/blob/main/Ejercicio%201%3A%20Comparaci%C3%B3n%20de%20colas) |
+| **Ejercicio 2**      |  **Simulación de supermercado con carritos y cajas** | [Ver codigo](https://github.com/elsyjuarez2128-hub/Ejercicios-Practicos-/blob/main/Ejercicio%202%3A%20Simulaci%C3%B3n%20de%20supermercado%20con%20carritos%20y%20cajas)|
 
 
 ## Actividad 2 Ejercicios Practicos de Listas

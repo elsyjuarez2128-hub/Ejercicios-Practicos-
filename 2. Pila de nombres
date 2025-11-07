@@ -1,0 +1,35 @@
+*/
+*@autor Elsy Joselyn Godinez Juarez
+*
+import java.util.Scanner;
+import java.util.Stack;
+
+public class Ejercicio2 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Stack<String> pila = new Stack<>();
+        String nombre;
+
+        System.out.println("=== Pila de Nombres ===");
+        System.out.println("Ingrese nombres (escriba 'FIN' para terminar):");
+
+        //  Leer nombres hasta que el usuario escriba 'FIN'
+        while (true) {
+            System.out.print("Nombre: ");
+            nombre = sc.nextLine();
+            if (nombre.equalsIgnoreCase("FIN")) {
+                break; // termina la entrada
+            }
+            //  Apilar cada nombre
+            pila.push(nombre);
+        }
+
+        //  Mostrar nombres en orden inverso
+        System.out.println("\nNombres en orden inverso:");
+        while (!pila.isEmpty()) {
+            System.out.println(pila.pop());
+        }
+
+        sc.close();
+    }
+}

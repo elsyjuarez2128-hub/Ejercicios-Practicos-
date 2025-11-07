@@ -21,4 +21,4 @@
 | Programa                 | Descripción               | Ver código |
 |--------------------------|---------------------------|-------------|
 | **Ejercicio 1**   | **Simulación simple de pila** |[Ver codigo](https://github.com/elsyjuarez2128-hub/Ejercicios-Practicos-/blob/main/1.%20Simulaci%C3%B3n%20simple%20de%20pila)|
-| **Ejercicio 2**      |  **Pila de nombres**       |[ [Ver codigo](https://github.com/elsyjuarez2128-hub/Ejercicios-Practicos-/blob/main/1.%20Simulaci%C3%B3n%20simple%20de%20pila)|
+| **Ejercicio 2**      |  **Pila de nombres**       |[Ver codigo](https://github.com/elsyjuarez2128-hub/Ejercicios-Practicos-/blob/main/1.%20Simulaci%C3%B3n%20simple%20de%20pila)|](https://github.com/elsyjuarez2128-hub/Ejercicios-Practicos-/blob/main/2.%20Pila%20de%20nombres)

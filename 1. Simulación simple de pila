@@ -1,0 +1,27 @@
+*/
+*@autor Elsy Joselyn Godinez Juarez
+*
+import java.util.Stack;
+
+public class Ejercicio1 {
+    public static void main(String[] args) {
+        // Crear una pila vacía
+        Stack<Integer> pila = new Stack<>();
+
+        //  Insertar elementos (push)
+        pila.push(5);
+        pila.push(10);
+        pila.push(15);
+        pila.push(20);
+
+        // En este punto la pila contiene: [5, 10, 15, 20]
+        System.out.println("Pila inicial: " + pila);
+
+        // Eliminar (pop) los dos últimos elementos ingresados
+        pila.pop(); // elimina 20
+        pila.pop(); // elimina 15
+
+        // Mostrar contenido actual de la pila
+        System.out.println("Contenido actual: " + pila);
+    }
+}

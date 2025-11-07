@@ -8,11 +8,11 @@ public class Ejercicio4 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        // 1️⃣ Leer palabra
+        //  Leer palabra
         System.out.print("Ingrese una palabra: ");
         String palabra = sc.nextLine();
 
-        // 2️⃣ Crear una pila de caracteres
+        //  Crear una pila de caracteres
         Stack<Character> pila = new Stack<>();
 
         // Apilar cada letra de la palabra
@@ -20,7 +20,7 @@ public class Ejercicio4 {
             pila.push(c);
         }
 
-        // 3️⃣ Desapilar e imprimir en orden inverso
+        // Desapilar e imprimir en orden inverso
         System.out.print("Invertida: ");
         while (!pila.isEmpty()) {
             System.out.print(pila.pop());

@@ -1,0 +1,38 @@
+*/
+*@autor Elsy Joselyn Godinez Juarez
+*
+import java.util.Stack;
+
+public class Ejercicio5 {
+
+    // Método que verifica si la expresión está balanceada
+    public static boolean estaBalanceada(String expr) {
+        Stack<Character> pila = new Stack<>();
+
+        // Recorrer cada carácter de la expresión
+        for (char c : expr.toCharArray()) {
+            if (c == '(') {
+                // Apilar cuando hay un paréntesis de apertura
+                pila.push(c);
+            } else if (c == ')') {
+                //  Desapilar cuando hay un paréntesis de cierre
+                if (pila.isEmpty()) {
+                    // Si no hay nada para desapilar → no está balanceada
+                    return false;
+                }
+                pila.pop();
+            }
+        }
+
+        //  Si la pila está vacía → todos los paréntesis se emparejaron
+        return pila.isEmpty();
+    }
+
+    // Método principal
+    public static void main(String[] args) {
+        System.out.println(estaBalanceada("((2+3)*5)"));  // true
+        System.out.println(estaBalanceada("((2+3)*5"));   // false
+        System.out.println(estaBalanceada("(2+3))("));    // false
+        System.out.println(estaBalanceada("()"));         // true
+    }
+}

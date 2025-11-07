@@ -1,0 +1,32 @@
+*/
+*@autor Elsy Joselyn Godinez Juarez
+*
+import java.util.Stack;
+import java.util.Scanner;
+
+public class Ejercicio4 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // 1️⃣ Leer palabra
+        System.out.print("Ingrese una palabra: ");
+        String palabra = sc.nextLine();
+
+        // 2️⃣ Crear una pila de caracteres
+        Stack<Character> pila = new Stack<>();
+
+        // Apilar cada letra de la palabra
+        for (char c : palabra.toCharArray()) {
+            pila.push(c);
+        }
+
+        // 3️⃣ Desapilar e imprimir en orden inverso
+        System.out.print("Invertida: ");
+        while (!pila.isEmpty()) {
+            System.out.print(pila.pop());
+        }
+
+        System.out.println(); // salto de línea final
+        sc.close();
+    }
+}

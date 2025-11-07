@@ -1,0 +1,25 @@
+*/
+*@autor Elsy Joselyn Godinez Juarez
+*
+import java.util.Stack;
+
+public class Ejercicio9 {
+    public static void main(String[] args) {
+        // Lista original
+        int[] lista = {1, 2, 3, 4};
+
+        // Crear pila
+        Stack<Integer> pila = new Stack<>();
+
+        //  Apilar todos los elementos
+        for (int n : lista) {
+            pila.push(n);
+        }
+
+        //  Desapilar para invertir el orden
+        System.out.print("Lista invertida: ");
+        while (!pila.isEmpty()) {
+            System.out.print(pila.pop() + " ");
+        }
+    }
+}

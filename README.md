@@ -27,3 +27,4 @@
 |**Ejercicio 5**|**Balanceo de paréntesis**|[Ver codigo](https://github.com/elsyjuarez2128-hub/Ejercicios-Practicos-/blob/main/Balanceo%20de%20par%C3%A9ntesis)|
 |**Ejercicio 6**|**Decimal a binario**|[Ver codigo](https://github.com/elsyjuarez2128-hub/Ejercicios-Practicos-/blob/main/6.%20Decimal%20a%20binario)
 |**Ejercicio 7**|**Simular función Deshacer (Undo)**|[Ver codigo](https://github.com/elsyjuarez2128-hub/Ejercicios-Practicos-/blob/main/7.%20Simular%20funci%C3%B3n%20Deshacer%20(Undo))|
+|**Ejercicio 8**|**Evaluar expresión postfija**|

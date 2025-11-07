@@ -1,0 +1,34 @@
+*/
+*@autor Elsy Joselyn Godinez Juarez
+*
+import java.util.Stack;
+import java.util.Scanner;
+
+public class Ejercicio10 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Ingrese palabra: ");
+        String palabra = sc.nextLine();
+
+        // Crear pila de caracteres
+        Stack<Character> pila = new Stack<>();
+
+        //  Apilar todos los caracteres
+        for (char c : palabra.toCharArray()) {
+            pila.push(c);
+        }
+
+        //  Desapilar para invertir la palabra
+        String invertida = "";
+        while (!pila.isEmpty()) {
+            invertida += pila.pop();
+        }
+
+        // Comparar palabra original con la invertida
+        if (palabra.equalsIgnoreCase(invertida)) {
+            System.out.println("Es palíndromo");
+        } else {
+            System.out.println("No es palíndromo");
+        }
+    }
+}

@@ -1,0 +1,103 @@
+*/
+* @autor Elsy Joselyn Godinez Juarez
+*
+import java.util.Random;
+import java.util.Scanner;
+
+// Clase Nodo
+class Nodo {
+    int dato;
+    Nodo siguiente;
+
+    public Nodo(int dato) {
+        this.dato = dato;
+        this.siguiente = null;
+    }
+}
+
+// Clase ListaEnlazadaSimple
+class ListaEnlazadaSimple {
+    Nodo cabeza;
+
+    //  Insertar nodo al final de la lista
+    public void insertarAlFinal(int dato) {
+        Nodo nuevo = new Nodo(dato);
+        if (cabeza == null) {
+            cabeza = nuevo;
+        } else {
+            Nodo actual = cabeza;
+            while (actual.siguiente != null) {
+                actual = actual.siguiente;
+            }
+            actual.siguiente = nuevo;
+        }
+    }
+
+    //  Recorrer y mostrar la lista
+    public void mostrarLista() {
+        Nodo actual = cabeza;
+        if (actual == null) {
+            System.out.println("La lista está vacía.");
+            return;
+        }
+
+        System.out.print("Lista: ");
+        while (actual != null) {
+            System.out.print(actual.dato + " ");
+            actual = actual.siguiente;
+        }
+        System.out.println();
+    }
+
+    //  Eliminar nodos mayores a un valor dado
+    public void eliminarMayoresQue(int limite) {
+        // Eliminar nodos desde el inicio si son mayores
+        while (cabeza != null && cabeza.dato > limite) {
+            cabeza = cabeza.siguiente;
+        }
+
+        // Eliminar nodos en el resto de la lista
+        Nodo actual = cabeza;
+        while (actual != null && actual.siguiente != null) {
+            if (actual.siguiente.dato > limite) {
+                actual.siguiente = actual.siguiente.siguiente; // salta el nodo
+            } else {
+                actual = actual.siguiente; // avanza
+            }
+        }
+    }
+}
+
+// Clase principal con el main
+public class ListaEnlazadaSimpleMain {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Random random = new Random();
+        ListaEnlazadaSimple lista = new ListaEnlazadaSimple();
+
+        // Generar la lista con números aleatorios positivos
+        System.out.print("¿Cuántos números desea generar? ");
+        int n = sc.nextInt();
+
+        for (int i = 0; i < n; i++) {
+            int numero = 1 + random.nextInt(100); // entre 1 y 100
+            lista.insertarAlFinal(numero);
+        }
+
+        // Mostrar la lista generada
+        System.out.println("\nLista generada:");
+        lista.mostrarLista();
+
+        // Solicitar límite y eliminar nodos mayores
+        System.out.print("\nIngrese el valor límite: ");
+        int limite = sc.nextInt();
+
+        lista.eliminarMayoresQue(limite);
+
+        // Mostrar la lista final
+        System.out.println("\nLista después de eliminar mayores que " + limite + ":");
+        lista.mostrarLista();
+
+        sc.close();
+    }
+}

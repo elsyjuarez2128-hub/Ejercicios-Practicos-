@@ -1,0 +1,156 @@
+import java.util.*;
+
+public class SimulacionSupermercadoConCarritos {
+
+    // Representa a un cliente
+    static class Cliente {
+        int id;
+        int tiempoLlegada;
+        int tiempoAtencion;   // tiempo que tardará en caja
+        int tiempoEspera;     // cuánto esperó antes de ser atendido
+        boolean atendido;
+
+        Cliente(int id, int tiempoLlegada, int tiempoAtencion) {
+            this.id = id;
+            this.tiempoLlegada = tiempoLlegada;
+            this.tiempoAtencion = tiempoAtencion;
+            this.atendido = false;
+        }
+    }
+
+    // Representa una caja de pago (con su cola)
+    static class Caja {
+        Queue<Cliente> cola = new LinkedList<>();
+        Cliente clienteActual = null;
+        int tiempoRestante = 0;
+
+        boolean estaLibre() {
+            return clienteActual == null;
+        }
+
+        void atenderSiguiente() {
+            if (clienteActual == null && !cola.isEmpty()) {
+                clienteActual = cola.poll();
+                tiempoRestante = clienteActual.tiempoAtencion;
+                clienteActual.atendido = true;
+            }
+        }
+
+        void avanzarTiempo() {
+            if (clienteActual != null) {
+                tiempoRestante--;
+                if (tiempoRestante <= 0) {
+                    clienteActual = null;
+                }
+            }
+        }
+
+        int getTamañoCola() {
+            return cola.size();
+        }
+    }
+
+    public static void main(String[] args) {
+        // --- CONFIGURACIÓN DE LA SIMULACIÓN ---
+        final int DURACION = 420; // 7 horas = 420 minutos
+        final int NUM_CAJAS = 3;
+        final int NUM_CARRITOS = 25;
+        final double PROB_LLEGADA = 0.6; // probabilidad de llegada por minuto
+        final int TIEMPO_MIN_ATENCION = 4;
+        final int TIEMPO_MAX_ATENCION = 10;
+
+        // --- ESTRUCTURAS DE DATOS ---
+        Queue<Integer> carritosDisponibles = new LinkedList<>();
+        for (int i = 1; i <= NUM_CARRITOS; i++) {
+            carritosDisponibles.add(i);
+        }
+
+        Queue<Cliente> clientesEsperandoCarrito = new LinkedList<>();
+        List<Caja> cajas = new ArrayList<>();
+        for (int i = 0; i < NUM_CAJAS; i++) {
+            cajas.add(new Caja());
+        }
+
+        // --- VARIABLES DE CONTROL ---
+        Random random = new Random();
+        int totalClientes = 0;
+        int clientesAtendidos = 0;
+        int maxColaCaja = 0;
+        int maxClientesEsperandoCarrito = 0;
+
+        // --- SIMULACIÓN MINUTO A MINUTO ---
+        for (int minuto = 0; minuto < DURACION; minuto++) {
+
+            //  Llegada de nuevos clientes
+            if (random.nextDouble() < PROB_LLEGADA) {
+                totalClientes++;
+                int tiempoAtencion = TIEMPO_MIN_ATENCION + random.nextInt(TIEMPO_MAX_ATENCION - TIEMPO_MIN_ATENCION + 1);
+                Cliente nuevo = new Cliente(totalClientes, minuto, tiempoAtencion);
+
+                if (!carritosDisponibles.isEmpty()) {
+                    // Toma un carrito y busca caja con menor cola
+                    carritosDisponibles.poll();
+                    Caja cajaMenosOcupada = cajas.get(0);
+                    for (Caja c : cajas) {
+                        if (c.getTamañoCola() < cajaMenosOcupada.getTamañoCola()) {
+                            cajaMenosOcupada = c;
+                        }
+                    }
+                    cajaMenosOcupada.cola.add(nuevo);
+                } else {
+                    // Espera carrito
+                    clientesEsperandoCarrito.add(nuevo);
+                }
+            }
+
+            // Avanzar el tiempo en las cajas
+            for (Caja c : cajas) {
+                c.avanzarTiempo();
+                if (c.estaLibre()) {
+                    // Si terminó un cliente, libera un carrito
+                    if (c.clienteActual == null) {
+                        // Liberar carrito si había uno
+                        if (!carritosDisponibles.contains(carritosDisponibles.size() + 1)) {
+                            carritosDisponibles.add(1); // se libera un carrito cualquiera
+                        }
+                    }
+                    c.atenderSiguiente();
+                    if (c.clienteActual != null) {
+                        clientesAtendidos++;
+                    }
+                }
+            }
+
+            //  Si hay carritos disponibles, asignarlos a los que esperan
+            while (!carritosDisponibles.isEmpty() && !clientesEsperandoCarrito.isEmpty()) {
+                Cliente esperando = clientesEsperandoCarrito.poll();
+                carritosDisponibles.poll();
+
+                // Se coloca en la caja con menor cola
+                Caja cajaMenosOcupada = cajas.get(0);
+                for (Caja c : cajas) {
+                    if (c.getTamañoCola() < cajaMenosOcupada.getTamañoCola()) {
+                        cajaMenosOcupada = c;
+                    }
+                }
+                cajaMenosOcupada.cola.add(esperando);
+            }
+
+            //  Actualizar estadísticas
+            for (Caja c : cajas) {
+                maxColaCaja = Math.max(maxColaCaja, c.getTamañoCola());
+            }
+            maxClientesEsperandoCarrito = Math.max(maxClientesEsperandoCarrito, clientesEsperandoCarrito.size());
+        }
+
+        // --- RESULTADOS ---
+        System.out.println("=== SIMULACIÓN SUPERMERCADO CON CARRITOS ===");
+        System.out.println("Duración de simulación: " + DURACION + " minutos (7 horas)");
+        System.out.println("Total de clientes que llegaron: " + totalClientes);
+        System.out.println("Clientes atendidos: " + clientesAtendidos);
+        System.out.println("Carritos disponibles al final: " + carritosDisponibles.size());
+        System.out.println("Máximo de clientes esperando carrito: " + maxClientesEsperandoCarrito);
+        System.out.println("Máximo tamaño de cola en una caja: " + maxColaCaja);
+        System.out.println("Clientes aún esperando carrito: " + clientesEsperandoCarrito.size());
+    }
+}

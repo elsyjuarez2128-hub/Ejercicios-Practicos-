@@ -1,0 +1,153 @@
+*
+/*
+*@autor Elsy Joselyn Godinez Juarez
+*
+import java.io.*;
+import java.util.Scanner;
+
+// Clase Nodo para lista enlazada simple
+class Nodo {
+    String palabra;
+    Nodo siguiente;
+
+    public Nodo(String palabra) {
+        this.palabra = palabra;
+        this.siguiente = null;
+    }
+}
+
+// Clase ListaEnlazadaPalabras
+class ListaEnlazadaPalabras {
+    Nodo cabeza;
+
+    // Insertar palabra al final
+    public void insertarAlFinal(String palabra) {
+        Nodo nuevo = new Nodo(palabra);
+        if (cabeza == null) {
+            cabeza = nuevo;
+        } else {
+            Nodo actual = cabeza;
+            while (actual.siguiente != null) {
+                actual = actual.siguiente;
+            }
+            actual.siguiente = nuevo;
+        }
+    }
+
+    //  Mostrar lista completa
+    public void mostrarLista() {
+        if (cabeza == null) {
+            System.out.println("La lista está vacía.");
+            return;
+        }
+        Nodo actual = cabeza;
+        System.out.println("Contenido de la lista:");
+        while (actual != null) {
+            System.out.print(actual.palabra + " ");
+            actual = actual.siguiente;
+        }
+        System.out.println();
+    }
+
+    // Eliminar palabra específica
+    public void eliminarPalabra(String palabra) {
+        if (cabeza == null) {
+            System.out.println("La lista está vacía.");
+            return;
+        }
+
+        // Si la cabeza contiene la palabra
+        while (cabeza != null && cabeza.palabra.equalsIgnoreCase(palabra)) {
+            cabeza = cabeza.siguiente;
+        }
+
+        // Recorrer y eliminar coincidencias
+        Nodo actual = cabeza;
+        while (actual != null && actual.siguiente != null) {
+            if (actual.siguiente.palabra.equalsIgnoreCase(palabra)) {
+                actual.siguiente = actual.siguiente.siguiente;
+            } else {
+                actual = actual.siguiente;
+            }
+        }
+    }
+
+    //  Escribir lista en archivo (una palabra por espacio)
+    public void escribirEnArchivo(String nombreArchivo) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(nombreArchivo))) {
+            Nodo actual = cabeza;
+            while (actual != null) {
+                writer.write(actual.palabra);
+                if (actual.siguiente != null) writer.write(" ");
+                actual = actual.siguiente;
+            }
+            System.out.println("Archivo actualizado correctamente: " + nombreArchivo);
+        } catch (IOException e) {
+            System.out.println("Error al escribir el archivo: " + e.getMessage());
+        }
+    }
+}
+
+// Clase principal con menú
+public class ListaPalabrasDesdeArchivo {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        ListaEnlazadaPalabras lista = new ListaEnlazadaPalabras();
+
+        System.out.print("Ingrese el nombre del archivo (por ejemplo palabras.txt): ");
+        String nombreArchivo = sc.nextLine();
+
+        // 1️⃣ Lectura del archivo
+        try (BufferedReader reader = new BufferedReader(new FileReader(nombreArchivo))) {
+            String linea;
+            while ((linea = reader.readLine()) != null) {
+                String[] palabras = linea.split("\\s+"); // separar por espacios o saltos
+                for (String p : palabras) {
+                    if (!p.isEmpty()) {
+                        lista.insertarAlFinal(p);
+                    }
+                }
+            }
+            System.out.println("Archivo leído correctamente.\n");
+        } catch (FileNotFoundException e) {
+            System.out.println("No se encontró el archivo. Se creará uno nuevo al guardar.");
+        } catch (IOException e) {
+            System.out.println("Error al leer el archivo: " + e.getMessage());
+        }
+
+        // Menú interactivo
+        int opcion;
+        do {
+            System.out.println("\n=== MENÚ LISTA DE PALABRAS ===");
+            System.out.println("1. Mostrar lista");
+            System.out.println("2. Añadir palabra");
+            System.out.println("3. Eliminar palabra");
+            System.out.println("4. Guardar lista en archivo");
+            System.out.println("5. Salir");
+            System.out.print("Seleccione una opción: ");
+            opcion = sc.nextInt();
+            sc.nextLine(); // limpiar buffer
+
+            switch (opcion) {
+                case 1 -> lista.mostrarLista();
+                case 2 -> {
+                    System.out.print("Ingrese la palabra a añadir: ");
+                    String palabraNueva = sc.nextLine();
+                    lista.insertarAlFinal(palabraNueva);
+                    System.out.println("Palabra añadida.");
+                }
+                case 3 -> {
+                    System.out.print("Ingrese la palabra a eliminar: ");
+                    String palabraEliminar = sc.nextLine();
+                    lista.eliminarPalabra(palabraEliminar);
+                    System.out.println("Palabra(s) eliminada(s) si existían.");
+                }
+                case 4 -> lista.escribirEnArchivo(nombreArchivo);
+                case 5 -> System.out.println("Saliendo del programa...");
+                default -> System.out.println("Opción no válida. Intente de nuevo.");
+            }
+        } while (opcion != 5);
+
+        sc.close();
+    }
+}

@@ -1,0 +1,43 @@
+*/
+*@autor Elsy Joselyn Godinez Juarez
+*
+import java.util.Scanner;
+import java.util.Stack;
+
+public class Ejercicio7 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Stack<String> acciones = new Stack<>();
+
+        System.out.println("=== Simulación de función DESHACER (UNDO) ===");
+        System.out.println("Escriba una acción (por ejemplo: escribir 'Hola').");
+        System.out.println("Use 'UNDO' para deshacer la última acción y 'FIN' para salir.\n");
+
+        while (true) {
+            System.out.print("Acción (UNDO/FIN): ");
+            String act = sc.nextLine();
+
+            // Salir del programa
+            if (act.equalsIgnoreCase("FIN")) break;
+
+            // Deshacer última acción
+            if (act.equalsIgnoreCase("UNDO")) {
+                if (!acciones.isEmpty()) {
+                    System.out.println("Deshaciendo: " + acciones.pop());
+                } else {
+                    System.out.println("No hay acciones para deshacer.");
+                }
+            } 
+            // Agregar nueva acción
+            else {
+                acciones.push(act);
+            }
+
+            // Mostrar estado actual de la pila
+            System.out.println("Actual: " + acciones);
+        }
+
+        System.out.println("\nPrograma finalizado. Acciones restantes: " + acciones);
+        sc.close();
+    }
+}

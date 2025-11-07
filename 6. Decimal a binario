@@ -1,0 +1,39 @@
+*/
+*@autor Elsy Joselyn Godinez Juarez
+*
+import java.util.Stack;
+import java.util.Scanner;
+
+public class Ejercicio6 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Leer número decimal
+        System.out.print("Ingrese número: ");
+        int num = sc.nextInt();
+
+        // Validar entrada
+        if (num < 0) {
+            System.out.println("Por favor, ingrese un número positivo.");
+            return;
+        }
+
+        // Crear pila para almacenar restos
+        Stack<Integer> pila = new Stack<>();
+
+        //  Dividir por 2 y apilar los restos
+        while (num > 0) {
+            pila.push(num % 2); // resto de la división
+            num /= 2;           // actualizar número
+        }
+
+        // Mostrar los elementos de la pila (binario)
+        System.out.print("Binario: ");
+        while (!pila.isEmpty()) {
+            System.out.print(pila.pop());
+        }
+
+        System.out.println(); // salto de línea final
+        sc.close();
+    }
+}

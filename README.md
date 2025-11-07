@@ -22,4 +22,4 @@
 |--------------------------|---------------------------|-------------|
 | **Ejercicio 1**   | **Simulación simple de pila** |[Ver codigo](https://github.com/elsyjuarez2128-hub/Ejercicios-Practicos-/blob/main/1.%20Simulaci%C3%B3n%20simple%20de%20pila)|
 | **Ejercicio 2**      |  **Pila de nombres**       |[Ver codigo](https://github.com/elsyjuarez2128-hub/Ejercicios-Practicos-/blob/main/2.%20Pila%20de%20nombres)
-|**Ejercicio3**|**Verificar si una pila esta vacia**|
+|**Ejercicio3**|**Verificar si una pila esta vacia**|[Ver codigo](https://github.com/elsyjuarez2128-hub/Ejercicios-Practicos-/blob/main/3.%20Verificar%20si%20una%20pila%20est%C3%A1%20vac%C3%ADa)|

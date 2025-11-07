@@ -1,0 +1,118 @@
+
+/*
+*@autor Elsy Joselyn Godinez JUarez
+*
+
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Random;
+
+public class SimulacionSupermercado {
+
+    static class Cliente {
+        int tiempoLlegada;
+        int tiempoInicioAtencion;
+        int tiempoSalida;
+
+        Cliente(int tiempoLlegada) {
+            this.tiempoLlegada = tiempoLlegada;
+        }
+    }
+
+    static class Caja {
+        boolean ocupada = false;
+        int tiempoRestante = 0;
+        Cliente clienteActual = null;
+
+        void atender(Cliente c, int tiempoAtencion) {
+            ocupada = true;
+            tiempoRestante = tiempoAtencion;
+            clienteActual = c;
+            c.tiempoInicioAtencion = tiempoAtencion;
+        }
+
+        void avanzarTiempo() {
+            if (ocupada) {
+                tiempoRestante--;
+                if (tiempoRestante <= 0) {
+                    ocupada = false;
+                    clienteActual = null;
+                }
+            }
+        }
+
+        boolean estaLibre() {
+            return !ocupada;
+        }
+    }
+
+    public static void main(String[] args) {
+        final int DURACION_SIMULACION = 420; // 7 horas * 60 minutos
+        final int CLIENTES_POR_MINUTO = 1;   // llegada promedio
+        final int TIEMPO_MIN_ATENCION = 3;   // min minutos
+        final int TIEMPO_MAX_ATENCION = 8;   // max minutos
+
+        Queue<Cliente> fila = new LinkedList<>();
+        Random random = new Random();
+
+        Caja[] cajas = new Caja[4];
+        for (int i = 0; i < cajas.length; i++) {
+            cajas[i] = new Caja();
+        }
+
+        int totalAtendidos = 0;
+        int tamanoMaxFila = 0;
+        int sumaTamanoFila = 0;
+        int tiempoMaxEspera = 0;
+        int tiempoAperturaCuartaCaja = -1;
+
+        for (int minuto = 0; minuto < DURACION_SIMULACION; minuto++) {
+            // Llegada de nuevos clientes
+            int clientesQueLlegan = (random.nextDouble() < 0.7) ? 1 : 0; // prob. 70% de llegada por minuto
+            for (int i = 0; i < clientesQueLlegan; i++) {
+                fila.add(new Cliente(minuto));
+            }
+
+            // Verificar si hay que abrir la cuarta caja
+            int cajasActivas = 3;
+            if (fila.size() > 20) {
+                cajasActivas = 4;
+                if (tiempoAperturaCuartaCaja == -1)
+                    tiempoAperturaCuartaCaja = minuto;
+            }
+
+            // Atender clientes si hay cajas libres
+            for (int i = 0; i < cajasActivas; i++) {
+                if (cajas[i].estaLibre() && !fila.isEmpty()) {
+                    Cliente cliente = fila.poll();
+                    int tiempoAtencion = TIEMPO_MIN_ATENCION + random.nextInt(TIEMPO_MAX_ATENCION - TIEMPO_MIN_ATENCION + 1);
+                    cajas[i].atender(cliente, tiempoAtencion);
+                    int espera = minuto - cliente.tiempoLlegada;
+                    tiempoMaxEspera = Math.max(tiempoMaxEspera, espera);
+                    totalAtendidos++;
+                }
+            }
+
+            // Avanzar tiempo en cada caja
+            for (Caja caja : cajas) {
+                caja.avanzarTiempo();
+            }
+
+            // Actualizar estadísticas
+            tamanoMaxFila = Math.max(tamanoMaxFila, fila.size());
+            sumaTamanoFila += fila.size();
+        }
+
+        double tamanoMedioFila = (double) sumaTamanoFila / DURACION_SIMULACION;
+
+        System.out.println("=== Resultados de la simulación ===");
+        System.out.println("Total de clientes atendidos: " + totalAtendidos);
+        System.out.println("Tamaño máximo de la fila: " + tamanoMaxFila);
+        System.out.println("Tamaño medio de la fila: " + String.format("%.2f", tamanoMedioFila));
+        System.out.println("Tiempo máximo de espera: " + tiempoMaxEspera + " minutos");
+        if (tiempoAperturaCuartaCaja != -1)
+            System.out.println("Cuarta caja abierta en el minuto: " + tiempoAperturaCuartaCaja);
+        else
+            System.out.println("La cuarta caja nunca se abrió.");
+    }
+}

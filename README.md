@@ -5,7 +5,7 @@
 |--------------------------|---------------------------|-------------|
 | **Ejercicio 1**   | **Comparación de colas** |[Ver codigo](https://github.com/elsyjuarez2128-hub/Ejercicios-Practicos-/blob/main/Ejercicio%201%20con%20Encapsulaci%C3%B3n)|
 | **Ejercicio 1**   |  **Prueba de clase Main.java** | [Ver codigo](https://github.com/elsyjuarez2128-hub/Ejercicios-Practicos-/blob/main/Clase%20de%20prueba)|
-|**Ejercicio 2**| **Simulación del supermercado con carritos y cajas en Encapsulación**|[Ver codigo]|
+|**Ejercicio 2**| **Simulación del supermercado con carritos y cajas en Encapsulación**|[Ver codigo](https://github.com/elsyjuarez2128-hub/Ejercicios-Practicos-/blob/main/Carrito.java)|
 
 ## Actividad 2 Ejercicios Practicos de Listas
 ## 💻 Códigos en Java

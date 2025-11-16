@@ -1,0 +1,87 @@
+import java.util.Scanner;
+/**
+ *Representación y Evaluación de Polinomios con
+*Listas Enlazadas
+ * @author Elsy Joselyn Godinez juarez
+*GTID141
+ * @author elsyjuarez2128@gmail.com
+ */
+class Nodo {
+    double coef;
+    int exp;
+    Nodo siguiente;
+
+    public Nodo(double coef, int exp) {
+        this.coef = coef;
+        this.exp = exp;
+        this.siguiente = null;
+    }
+}
+
+class Polinomio {
+    private Nodo cabeza;
+
+    public Polinomio() {
+        cabeza = null;
+    }
+
+    // Insertar términos en el orden dado
+    public void insertarTermino(double coef, int exp) {
+        Nodo nuevo = new Nodo(coef, exp);
+
+        if (cabeza == null) {
+            cabeza = nuevo;
+        } else {
+            Nodo aux = cabeza;
+            while (aux.siguiente != null) {
+                aux = aux.siguiente;
+            }
+            aux.siguiente = nuevo;
+        }
+    }
+
+    // Evaluar P(x)
+    public double evaluar(double x) {
+        double resultado = 0;
+        Nodo aux = cabeza;
+
+        while (aux != null) {
+            resultado += aux.coef * Math.pow(x, aux.exp);
+            aux = aux.siguiente;
+        }
+        return resultado;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        Polinomio poli = new Polinomio();
+
+        System.out.println("=== Entrada del polinomio ===");
+        System.out.println("Introduce coeficiente y exponente (ejemplo: 3 4)");
+        System.out.println("Escribe 'fin' para terminar.\n");
+
+        while (true) {
+            System.out.print("Coeficiente y exponente: ");
+            String entrada = sc.next();
+
+            if (entrada.equalsIgnoreCase("fin")) break;
+
+            double coef = Double.parseDouble(entrada);
+            int exp = sc.nextInt();
+
+            poli.insertarTermino(coef, exp);
+        }
+
+        System.out.println(" Tabla de valores de P(x) ");
+        System.out.println("   x      |    P(x)");
+        System.out.println("-------------------------");
+
+        for (double x = 0.0; x <= 5.0; x += 0.5) {
+            double resultado = poli.evaluar(x);
+            System.out.printf("%5.1f    |   %.4f\n", x, resultado);
+        }
+    }
+}

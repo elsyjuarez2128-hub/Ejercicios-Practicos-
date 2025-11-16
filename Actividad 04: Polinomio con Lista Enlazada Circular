@@ -1,0 +1,88 @@
+import java.util.Scanner;
+/**
+ *Polinomio con Lista Enlazada Circular
+ * @author Elsy Joselyn Godinez juarez
+ * @author elsyjuarez2128@gmail.com
+ *GTID141
+ */
+class Nodo {
+    double coef;
+    int exp;
+    Nodo siguiente;
+
+    public Nodo(double coef, int exp) {
+        this.coef = coef;
+        this.exp = exp;
+        this.siguiente = null;
+    }
+}
+
+class PolinomioCircular {
+    private Nodo ultimo; // referencia al último nodo (cabeza de la lista circular)
+
+    public PolinomioCircular() {
+        ultimo = null;
+    }
+
+    // Inserta términos al final manteniendo la circularidad
+    public void insertarTermino(double coef, int exp) {
+        Nodo nuevo = new Nodo(coef, exp);
+
+        if (ultimo == null) { 
+            // Primer nodo: apunta a sí mismo
+            ultimo = nuevo;
+            ultimo.siguiente = ultimo;
+        } else {
+            // Insertar después del último y actualizar referencia
+            nuevo.siguiente = ultimo.siguiente; 
+            ultimo.siguiente = nuevo;
+            ultimo = nuevo; 
+        }
+    }
+
+    // Recorrido circular mostrando términos del polinomio
+    public void mostrar() {
+        if (ultimo == null) {
+            System.out.println("El polinomio está vacío.");
+            return;
+        }
+
+        Nodo actual = ultimo.siguiente; // primer nodo
+        Nodo inicio = actual;
+
+        System.out.println("\nTérminos del polinomio (recorrido circular):");
+
+        do {
+            System.out.println("Coef: " + actual.coef + "  Exp: " + actual.exp);
+            actual = actual.siguiente;
+        } while (actual != inicio);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        PolinomioCircular polinomio = new PolinomioCircular();
+
+        System.out.println("=== Entrada del polinomio (coef exp) ===");
+        System.out.println("Ejemplo: 3 4   -4 2   11 0");
+        System.out.println("Escribe 'fin' para terminar.\n");
+
+        while (true) {
+            System.out.print("Coeficiente: ");
+            String entrada = sc.next();
+
+            if (entrada.equalsIgnoreCase("fin")) break;
+
+            double coef = Double.parseDouble(entrada);
+
+            System.out.print("Exponente: ");
+            int exp = sc.nextInt();
+
+            polinomio.insertarTermino(coef, exp);
+        }
+
+        polinomio.mostrar();
+    }
+}

@@ -1,0 +1,47 @@
+import java.util.LinkedList;
+import java.util.Queue;
+*/
+*@Elsy Joselyn Godinez Juarez
+*GTID141
+*Comparar dos colas usando una clase propia
+*/
+
+public class ColaEncapsulada<T> {
+    private Queue<T> cola;
+
+    public ColaEncapsulada() {
+        cola = new LinkedList<>();
+    }
+
+    public void encolar(T elemento) {
+        cola.offer(elemento);
+    }
+
+    public Queue<T> getCola() {
+        return cola;
+    }
+
+    public boolean comparar(ColaEncapsulada<T> otra) {
+        if (cola.size() != otra.getCola().size()) return false;
+
+        Queue<T> aux1 = new LinkedList<>();
+        Queue<T> aux2 = new LinkedList<>();
+
+        boolean iguales = true;
+
+        while (!cola.isEmpty()) {
+            T e1 = cola.poll();
+            T e2 = otra.getCola().poll();
+
+            if (!e1.equals(e2)) iguales = false;
+
+            aux1.offer(e1);
+            aux2.offer(e2);
+        }
+
+        while (!aux1.isEmpty()) cola.offer(aux1.poll());
+        while (!aux2.isEmpty()) otra.getCola().offer(aux2.poll());
+
+        return iguales;
+    }
+}

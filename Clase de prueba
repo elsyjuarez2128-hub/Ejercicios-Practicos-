@@ -1,0 +1,15 @@
+*@Elsy Joselyn Godinez Juarez
+*GTID141
+*Comparar dos colas usando una clase propia
+*/
+public class Main {
+    public static void main(String[] args) {
+        ColaEncapsulada<Integer> c1 = new ColaEncapsulada<>();
+        ColaEncapsulada<Integer> c2 = new ColaEncapsulada<>();
+
+        c1.encolar(1);  c1.encolar(2);  c1.encolar(3);
+        c2.encolar(1);  c2.encolar(2);  c2.encolar(3);
+
+        System.out.println("¿Son iguales? " + c1.comparar(c2));
+    }
+}

@@ -1,0 +1,101 @@
+import java.util.Scanner;
+/**
+ *Lista Doblemente Enlazada de Caracteres
+ * @author Elsy Joselyn Godinez juarez
+ * @author elsyjuarez2128@gmail.com
+ *GTID141
+ */
+
+class Nodo {
+    char dato;
+    Nodo anterior;
+    Nodo siguiente;
+
+    public Nodo(char dato) {
+        this.dato = dato;
+        this.anterior = null;
+        this.siguiente = null;
+    }
+}
+
+class ListaDoble {
+    private Nodo cabeza;
+    private Nodo cola;
+
+    public ListaDoble() {
+        cabeza = null;
+        cola = null;
+    }
+
+    // Insertar al final
+    public void insertar(char c) {
+        Nodo nuevo = new Nodo(c);
+
+        if (cabeza == null) {
+            cabeza = nuevo;
+            cola = nuevo;
+        } else {
+            cola.siguiente = nuevo;
+            nuevo.anterior = cola;
+            cola = nuevo;
+        }
+    }
+
+    // Ordenamiento burbuja (solo intercambia los datos)
+    public void ordenar() {
+        if (cabeza == null) return;
+
+        boolean huboCambios;
+
+        do {
+            huboCambios = false;
+            Nodo actual = cabeza;
+
+            while (actual.siguiente != null) {
+                if (actual.dato > actual.siguiente.dato) {
+                    // Intercambio
+                    char temp = actual.dato;
+                    actual.dato = actual.siguiente.dato;
+                    actual.siguiente.dato = temp;
+                    huboCambios = true;
+                }
+                actual = actual.siguiente;
+            }
+        } while (huboCambios);
+    }
+
+    // Mostrar desde la cabeza
+    public void mostrar() {
+        Nodo aux = cabeza;
+
+        System.out.print("Lista ordenada: ");
+
+        while (aux != null) {
+            System.out.print(aux.dato + " ");
+            aux = aux.siguiente;
+        }
+        System.out.println();
+    }
+}
+
+public class Actividad05 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        ListaDoble lista = new ListaDoble();
+
+        System.out.println("=== Actividad 05: Lista Doblemente Enlazada de Caracteres ===");
+        System.out.print("Ingresa una cadena: ");
+        String cadena = sc.nextLine();
+
+        // Crear lista a partir de la cadena
+        for (char c : cadena.toCharArray()) {
+            lista.insertar(c);
+        }
+
+        // Ordenar alfabéticamente
+        lista.ordenar();
+
+        // Mostrar resultado
+        lista.mostrar();
+    }
+}

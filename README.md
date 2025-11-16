@@ -3,7 +3,7 @@
 
 | Programa                 | Descripción               | Ver código |
 |--------------------------|---------------------------|-------------|
-| **Ejercicio 1**   | **Comparación de colas** |[Ver codigo](https://github.com/elsyjuarez2128-hub/Ejercicios-Practicos-/blob/main/Ejercicio%201%3A%20Comparaci%C3%B3n%20de%20colas) |
+| **Ejercicio 1**   | **Comparación de colas** |[Ver codigo](https://github.com/elsyjuarez2128-hub/Ejercicios-Practicos-/blob/main/Ejercicio%201%20con%20Encapsulaci%C3%B3n)|
 | **Ejercicio 2**      |  **Simulación de supermercado con carritos y cajas** | [Ver codigo](https://github.com/elsyjuarez2128-hub/Ejercicios-Practicos-/blob/main/Ejercicio%202%3A%20Simulaci%C3%B3n%20de%20supermercado%20con%20carritos%20y%20cajas)|
 
 

@@ -10,11 +10,10 @@
 |**Ejercicio 2**|**Supermercado**|[Ver codigo](https://github.com/elsyjuarez2128-hub/Ejercicios-Practicos-/blob/main/Supermecardo.java)|
 |**Ejercicio 2**|**Prueba de Main.java**|[Ver codigo](https://github.com/elsyjuarez2128-hub/Ejercicios-Practicos-/blob/main/Prueba%20de%20Main%20supermercado.java)|
 |**Ejercicio 3**|**Simulación de atención al cliente en supermercado Esperanza**|[Ver codigo](https://github.com/elsyjuarez2128-hub/Ejercicios-Practicos-/blob/main/Cliente.java)|
-| **Ejercicio 3** | **SimulacionEsperanza.java** | [Ver Codigo](https://github.com/elsyjuarez2128-hub/Ejercicios-Practicos-/blob/main/SimulacionEsperanza.java)|
+|**jercicio 3**|**SimulacionEsperanza.java**|[Ver Codigo](https://github.com/elsyjuarez2128-hub/Ejercicios-Practicos-/blob/main/SimulacionEsperanza.java)|
+|**Ejercicio 3**|**CajaAtencion.java**|[Ver codigo](https://github.com/elsyjuarez2128-hub/Ejercicios-Practicos-/blob/main/CajaAtencion.java)|
 
 
-
-|**Ejercicio 3**|**CajaAtencion.java**|[Ver codigo](https://github.com/elsyjuarez2128-hub/Ejercicios-Practicos-/blob/main/CajaAtencion.java)
 ## Actividad 2 Ejercicios Practicos de Listas
 ## 💻 Códigos en Java
 

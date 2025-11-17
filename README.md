@@ -7,7 +7,7 @@
 | **Ejercicio 1**   |  **Prueba de clase Main.java** | [Ver codigo](https://github.com/elsyjuarez2128-hub/Ejercicios-Practicos-/blob/main/Clase%20de%20prueba)|
 |**Ejercicio 2**| **Simulación del supermercado con carritos y cajas en Encapsulación**|[Ver codigo](https://github.com/elsyjuarez2128-hub/Ejercicios-Practicos-/blob/main/Carrito.java)|
 |**Ejercicio 2**|**Caja en Encapsulamiento.java**|[Ver Codigo](https://github.com/elsyjuarez2128-hub/Ejercicios-Practicos-/blob/main/Caja.java)|
-|**Ejercicio 2**|**Supermercado**|[Ver codigo]
+|**Ejercicio 2**|**Supermercado**|[Ver codigo](https://github.com/elsyjuarez2128-hub/Ejercicios-Practicos-/blob/main/Supermecardo.java)|
 ## Actividad 2 Ejercicios Practicos de Listas
 ## 💻 Códigos en Java
 

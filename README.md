@@ -8,7 +8,8 @@
 |**Ejercicio 2**| **Simulación del supermercado con carritos y cajas en Encapsulación**|[Ver codigo](https://github.com/elsyjuarez2128-hub/Ejercicios-Practicos-/blob/main/Carrito.java)|
 |**Ejercicio 2**|**Caja en Encapsulamiento.java**|[Ver Codigo](https://github.com/elsyjuarez2128-hub/Ejercicios-Practicos-/blob/main/Caja.java)|
 |**Ejercicio 2**|**Supermercado**|[Ver codigo](https://github.com/elsyjuarez2128-hub/Ejercicios-Practicos-/blob/main/Supermecardo.java)|
-|**Ejercicio 2**|**Prueba de Main**|[Ver codigo]
+|**Ejercicio 2**|**Prueba de Main.java**|[Ver codigo](https://github.com/elsyjuarez2128-hub/Ejercicios-Practicos-/blob/main/Prueba%20de%20Main%20supermercado.java)|
+|**Ejercicio 3**|**Ejercicio 3 con Encapsulación**|[Ver codigo]
 ## Actividad 2 Ejercicios Practicos de Listas
 ## 💻 Códigos en Java
 
